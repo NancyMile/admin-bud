@@ -9,12 +9,13 @@
 
 
     const setBudget = () => {
-        if (budget.value <= 0) {
+        if (budget.value <= 0 || budget.value === '') {
            // console.log('Budget invalid')
             error.value = 'Budget invalid'
             setTimeout(() => {
                 error.value = ''
-            },3000)
+            }, 3000);
+            return
         }
 
         emit('set-budget',budget.value)

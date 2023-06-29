@@ -1,8 +1,19 @@
 <script setup>
+    import { ref } from 'vue';
+
+    const budget = ref(0)
+    const setBudget = () => {
+        if (budget.value <= 0) {
+            console.log('Budget invalid')
+        }
+    }
 </script>
 
 <template>
-    <form class="budget">
+    <form
+        class="budget"
+        @submit.prevent="setBudget"
+    >
         <div class="campo">
             <label for="new-budget">Budget</label>
             <input
@@ -10,6 +21,7 @@
                 id="new-budget"
                 class="new-budget"
                 placeholder="Add budget"
+                v-model.number="budget"
             />
         </div>
         <input type="submit" value="Send">

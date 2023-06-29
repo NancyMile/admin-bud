@@ -1,5 +1,12 @@
 <script setup>
+  import { ref } from 'vue'
   import Budget from './components/Budget.vue'
+
+  const budget = ref(0)
+  const setBudget = (amount) => {
+    budget.value = amount
+  }
+
 </script>
 
 <template>
@@ -8,7 +15,10 @@
       <h1>Admin Expenses</h1>
       <div class="contenedor-header contenedor shadow">
         <Budget
+          v-if="budget === 0"
+          @set-budget="setBudget"
         />
+        <p v-else>Valid Budget</p>
       </div>
     </header>
     <Filter/>

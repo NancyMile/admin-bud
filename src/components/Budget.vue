@@ -1,11 +1,19 @@
 <script setup>
     import { ref } from 'vue';
+    import Alert from './Alert.vue'
 
     const budget = ref(0)
+    const error = ref('')
+
     const setBudget = () => {
         if (budget.value <= 0) {
-            console.log('Budget invalid')
+           // console.log('Budget invalid')
+           error.value = 'Budget invalid'
         }
+
+        setTimeout(() => {
+            error.value = ''
+        },3000)
     }
 </script>
 
@@ -14,6 +22,9 @@
         class="budget"
         @submit.prevent="setBudget"
     >
+        <Alert v-if="error">
+            {{ error }}
+        </Alert>
         <div class="campo">
             <label for="new-budget">Budget</label>
             <input

@@ -1,5 +1,5 @@
 <script setup>
-    import { ref } from 'vue'
+    import { ref, computed } from 'vue'
     import closeModal from '../assets/img/cerrar.svg'
     import Alert from './Alert.vue'
 
@@ -83,6 +83,10 @@
 
     }
 
+    const isEditing = computed(() => {
+        return props.id
+    })
+
 </script>
 
 <template>
@@ -101,7 +105,7 @@
                 class="new-spent"
             >
                 <legend>
-                   {{ id ? 'Edit Expenses': 'Add expenses'}}
+                   {{ isEditing ? 'Edit Expenses': 'Add expenses'}}
                 </legend>
 
                 <Alert v-if="error">
@@ -154,7 +158,7 @@
                 </div>
                 <input
                     type="submit"
-                    :value="[id ? 'Edit Expenses': 'Add expenses']"
+                    :value="[isEditing ? 'Edit Expenses': 'Add expenses']"
                 />
             </form>
 

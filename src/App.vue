@@ -48,6 +48,16 @@
       ...spent,
       id: generateId(),
     })
+
+    closeModal()
+    //clear object
+    Object.assign(spent, {
+      name: '',
+      amount: '',
+      category: '',
+      id: null,
+      date: Date.now()
+    })
   }
 
 </script>

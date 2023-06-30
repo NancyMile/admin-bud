@@ -32,7 +32,15 @@
     available.value = budget.value - totalExpenses
   }, {
     deep: true
-})
+  })
+
+  watch(modal, () => {
+    if (!modal.show) {
+      resetStateExpense()
+    }
+  }, {
+    deep: true
+  })
 
   const setBudget = (amount) => {
     budget.value = amount
@@ -62,6 +70,11 @@
 
     closeModal()
     //clear object
+    resetStateExpense()
+  }
+
+  const resetStateExpense = () => {
+    //clear object
     Object.assign(spent, {
       name: '',
       amount: '',
@@ -69,6 +82,13 @@
       id: null,
       date: Date.now()
     })
+  }
+
+  const selectExpense = (id) => {
+    //console.log('select expense '+id)
+    const editExpense = expenses.value.filter(expense => expense.id === id)[0]
+    Object.assign(spent, editExpense)
+    displayModal()
   }
 
 </script>
@@ -100,6 +120,7 @@
           v-for="expense in expenses"
           :key="expense.id"
           :expense="expense"
+          @select-expense="selectExpense"
         />
       </div>
 

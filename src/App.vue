@@ -1,15 +1,25 @@
 <script setup>
-  import { ref } from 'vue'
+  import { ref, reactive } from 'vue'
   import Budget from './components/Budget.vue'
   import BudgetControl from './components/BudgetControl.vue';
+  import Modal from './components/Modal.vue'
   import newSpentIcon from './assets/img/nuevo-gasto.svg'
 
+  const modal = reactive({
+    show: false,
+    animate: false
+  })
   const budget = ref(0)
   const available = ref(0)
 
   const setBudget = (amount) => {
     budget.value = amount
     available.value = amount
+  }
+
+  const displayModal = () => {
+    modal.show = true
+    modal.animate = true
   }
 
 </script>
@@ -35,8 +45,14 @@
         <img
           :src="newSpentIcon"
           alt="New spent"
+          @click="displayModal"
         />
       </div>
+
+      <Modal
+        v-if="modal.show"
+      />
+
     </main>
     <Filter/>
   </div>

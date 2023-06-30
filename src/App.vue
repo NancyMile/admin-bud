@@ -12,6 +12,14 @@
   const budget = ref(0)
   const available = ref(0)
 
+  const spent = reactive({
+    name: '',
+    amount: '',
+    category: '',
+    id: null,
+    date: Date.now()
+  })
+
   const setBudget = (amount) => {
     budget.value = amount
     available.value = amount
@@ -62,6 +70,9 @@
         v-if="modal.show"
         @close-modal="closeModal"
         :modal="modal"
+        v-model:name="spent.name"
+        v-model:amount="spent.amount"
+        v-model:category="spent.category"
       />
 
     </main>

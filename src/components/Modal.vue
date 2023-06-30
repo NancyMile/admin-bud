@@ -7,6 +7,18 @@
         modal: {
             type: Object,
             required: true
+        },
+        name: {
+            type: String,
+            required: true
+        },
+        amount: {
+            type: [String, Number],
+            required: true
+        },
+        category: {
+            type: String,
+            required: true
         }
     })
 
@@ -35,6 +47,7 @@
                         type="text"
                         name="name"
                         placeholder="spent"
+                        :value="name"
                     />
                 </div>
                 <div class="field">
@@ -45,6 +58,7 @@
                         type="number"
                         name="ammount"
                         placeholder="amount"
+                        :value="amount"
                     />
                 </div>
                 <div class="field">
@@ -54,6 +68,7 @@
                     <select
                         name="category"
                         id="category"
+                        :value="category"
                     >
                         <option value="">-- Select --</option>
                         <option value="savings">Savings</option>

@@ -4,6 +4,7 @@
   import BudgetControl from './components/BudgetControl.vue';
   import Modal from './components/Modal.vue'
   import newSpentIcon from './assets/img/nuevo-gasto.svg'
+  import { generateId } from './helpers'
 
   const modal = reactive({
     show: false,
@@ -45,7 +46,7 @@
     //console.log('saving expense')
     expenses.value.push({
       ...spent,
-      id: 123,
+      id: generateId(),
     })
   }
 

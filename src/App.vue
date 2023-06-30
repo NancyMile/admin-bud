@@ -118,6 +118,7 @@
         @close-modal="closeModal"
         @saving-expense="savingExpense"
         :modal="modal"
+        :available="available"
         v-model:name="spent.name"
         v-model:amount="spent.amount"
         v-model:category="spent.category"

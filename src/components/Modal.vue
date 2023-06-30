@@ -23,13 +23,17 @@
         category: {
             type: String,
             required: true
+        },
+        available: {
+            type: Number,
+            required: true
         }
     })
 
     const addExpense = () => {
         //console.log('adding spent')
         //validate fields
-        const { name, amount, category } = props
+        const { name, amount, category, available } = props
         if ([name, amount, category].includes('')) {
             //console.log('Please fill everything')
             error.value = 'Please fill everything'
@@ -44,6 +48,13 @@
             setTimeout(() => {
                 error.value=''
             },3000)
+            return
+        }
+        if (available < amount) {
+            error.value = "Not enough budget for this"
+            setTimeout(() => {
+                error.value = ''
+            }, 3000)
             return
         }
 

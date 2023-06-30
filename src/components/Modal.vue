@@ -1,5 +1,9 @@
 <script setup>
+    import { ref } from 'vue'
     import closeModal from '../assets/img/cerrar.svg'
+    import Alert from './Alert.vue'
+
+    const error = ref('')
 
     const emit = defineEmits(['close-modal','update:name','update:amount','update:category'])
 
@@ -22,6 +26,31 @@
         }
     })
 
+    const addExpense = () => {
+        //console.log('adding spent')
+        //validate fields
+        const { name, amount, category } = props
+        if ([name, amount, category].includes('')) {
+            //console.log('Please fill everything')
+            error.value = 'Please fill everything'
+            setTimeout(() => {
+                error.value=''
+            },3000)
+            return
+        }
+        //validate amount > 0s
+        if (amount <= 0) {
+            error.value = "Invalid amount"
+            setTimeout(() => {
+                error.value=''
+            },3000)
+            return
+        }
+
+        console.log('Saving expense')
+
+    }
+
 </script>
 
 <template>
@@ -35,10 +64,18 @@
         <div class=" contenedor container-form"
             :class="[modal.animate ? 'animate': 'close']"
         >
-            <form class="new-spent">
+            <form
+                @submit.prevent="addExpense"
+                class="new-spent"
+            >
                 <legend>
                     Adding Spent
                 </legend>
+
+                <Alert v-if="error">
+                    {{ error }}
+                </Alert>
+
                 <div class="field">
                     <label for="name">
                         Name

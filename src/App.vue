@@ -62,11 +62,19 @@
   }
 
   const savingExpense = () => {
-    //console.log('saving expense')
-    expenses.value.push({
-      ...spent,
-      id: generateId(),
-    })
+    //editing
+    if (spent.id) {
+      //console.log('editing ...')
+      const { id } = spent
+      const index = expenses.value.findIndex((spent => spent.id === id))
+      expenses.value[index] = {...spent}
+    } else {
+      console.log('saving expense')
+      expenses.value.push({
+        ...spent,
+        id: generateId()
+      })
+    }
 
     closeModal()
     //clear object

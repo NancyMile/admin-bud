@@ -20,6 +20,8 @@
     date: Date.now()
   })
 
+  const expenses = ref([])
+
   const setBudget = (amount) => {
     budget.value = amount
     available.value = amount
@@ -40,7 +42,11 @@
   }
 
   const savingExpense = () => {
-    console.log('saving expense')
+    //console.log('saving expense')
+    expenses.value.push({
+      ...spent,
+      id: 123,
+    })
   }
 
 </script>

@@ -13,6 +13,56 @@
                 @click="$emit('close-modal')"
             />
         </div>
+        <div class=" contenedor">
+            <form>
+                <legend>
+                    Adding Spent
+                </legend>
+                <div class="field">
+                    <label for="name">
+                        Name
+                    </label>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="spent"
+                    />
+                </div>
+                <div class="field">
+                    <label for="amount">
+                        Amount
+                    </label>
+                    <input
+                        type="number"
+                        name="ammount"
+                        placeholder="amount"
+                    />
+                </div>
+                <div class="field">
+                    <label for="category">
+                        Category
+                    </label>
+                    <select
+                        name="category"
+                        id="category"
+                    >
+                        <option value="">-- Select --</option>
+                        <option value="savings">Savings</option>
+                        <option value="food">Food</option>
+                        <option value="home">Home</option>
+                        <option value="miscellaneus">Miscellaneus</option>
+                        <option value="leisure">Leisure</option>
+                        <option value="health">health</option>
+                        <option value="subscriptions">Subscriptions</option>
+                    </select>
+                </div>
+                <input
+                    type="submit"
+                    value="Add Spent"
+                />
+            </form>
+
+        </div>
     </div>
 
 </template>

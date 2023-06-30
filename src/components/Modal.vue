@@ -14,7 +14,7 @@
             />
         </div>
         <div class=" contenedor">
-            <form>
+            <form class="new-spent">
                 <legend>
                     Adding Spent
                 </legend>
@@ -83,6 +83,39 @@
     }
     .close-modal img {
         width:  3rem;
+        cursor: pointer;
+    }
+    .new-spent {
+        margin: 10rem auto 0 auto;
+        display: grid;
+        gap: 2rem;
+    }
+    .new-spent legend{
+        text-align: center;
+        color: var(--white);
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    .field {
+        display: grid;
+        gap: 2rem;
+    }
+    .new-spent input,
+    .new-spent select{
+        background-color: var(--light-gray);
+        border-radius: 1rem;
+        padding: 1rem;
+        border: none;
+        font-size: 2.2rem;
+    }
+    .new-spent label {
+        color: var(--white);
+        font-size: 3rem;
+    }
+    .new-spent input[type="submit"]{
+        background-color: var(--blue);
+        color: var(--white);
+        font-weight: 700;
         cursor: pointer;
     }
 

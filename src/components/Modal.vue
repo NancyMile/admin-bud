@@ -1,7 +1,14 @@
 <script setup>
     import closeModal from '../assets/img/cerrar.svg'
 
-    const  emit = defineEmits(['close-modal'])
+    const emit = defineEmits(['close-modal'])
+
+    const props = defineProps({
+        modal: {
+            type: Object,
+            required: true
+        }
+    })
 
 </script>
 
@@ -13,7 +20,9 @@
                 @click="$emit('close-modal')"
             />
         </div>
-        <div class=" contenedor">
+        <div class=" contenedor container-form"
+            :class="[modal.animate ? 'animate': 'close']"
+        >
             <form class="new-spent">
                 <legend>
                     Adding Spent
@@ -84,6 +93,18 @@
     .close-modal img {
         width:  3rem;
         cursor: pointer;
+    }
+    .container-form {
+        transition-property: all;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in;
+        opacity: 0;
+    }
+    .container-form.animate {
+        opacity: 1;
+    }
+    .container-form.close {
+        opacity: 0;
     }
     .new-spent {
         margin: 10rem auto 0 auto;

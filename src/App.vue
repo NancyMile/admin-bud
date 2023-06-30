@@ -19,12 +19,16 @@
 
   const displayModal = () => {
     modal.show = true
-    modal.animate = true
+    setTimeout(() => {
+      modal.animate = true
+    },300)
   }
 
   const closeModal = () => {
-    modal.show = false
     modal.animate = false
+    setTimeout(() => {
+      modal.show = false
+    },300)
 }
 
 </script>
@@ -57,6 +61,7 @@
       <Modal
         v-if="modal.show"
         @close-modal="closeModal"
+        :modal="modal"
       />
 
     </main>

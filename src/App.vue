@@ -3,6 +3,7 @@
   import Budget from './components/Budget.vue'
   import BudgetControl from './components/BudgetControl.vue';
   import Modal from './components/Modal.vue'
+  import Expense from './components/Expense.vue'
   import newSpentIcon from './assets/img/nuevo-gasto.svg'
   import { generateId } from './helpers'
 
@@ -79,6 +80,18 @@
       </div>
     </header>
     <main v-if="budget > 0">
+
+      <div class="list-expenses contenedor">
+        <h2>{{ expenses.length>0 ? 'Expenses': 'No Expenses'}}</h2>
+        <Expense
+          v-for="expense in expenses"
+          :key="expense.id"
+          :expense="expense"
+        />
+      </div>
+
+
+
       <div class="set-spent">
         <img
           :src="newSpentIcon"
@@ -165,6 +178,13 @@
   .set-spent img {
     width: 5rem;
     cursor: pointer;
+  }
+  .list-expenses{
+    margin-top: 10rem;
+  }
+  .list-expenses h2{
+    font-weight: 900;
+    color: var(--dark-gray);
   }
 
 </style>

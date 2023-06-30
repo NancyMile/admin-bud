@@ -1,12 +1,39 @@
 <script setup>
+    import closeModal from '../assets/img/cerrar.svg'
+
+    const  emit = defineEmits(['close-modal'])
+
 </script>
 
 <template>
-    <div>
-        <h1>From Modal</h1>
+    <div class="modal">
+        <div class="close-modal">
+            <img
+                :src="closeModal"
+                @click="$emit('close-modal')"
+            />
+        </div>
     </div>
 
 </template>
 
 <style scoped>
+    .modal {
+        position: absolute;
+        background-color: rgb(0 0 0/0.9);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .close-modal {
+        position: absolute;
+        right: 3rem;
+        top: 3rem
+    }
+    .close-modal img {
+        width:  3rem;
+        cursor: pointer;
+    }
+
 </style>

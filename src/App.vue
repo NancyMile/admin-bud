@@ -22,6 +22,11 @@
     modal.animate = true
   }
 
+  const closeModal = () => {
+    modal.show = false
+    modal.animate = false
+}
+
 </script>
 
 <template>
@@ -51,6 +56,7 @@
 
       <Modal
         v-if="modal.show"
+        @close-modal="closeModal"
       />
 
     </main>

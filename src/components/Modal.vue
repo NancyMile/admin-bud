@@ -1,7 +1,7 @@
 <script setup>
     import closeModal from '../assets/img/cerrar.svg'
 
-    const emit = defineEmits(['close-modal'])
+    const emit = defineEmits(['close-modal','update:name','update:amount','update:category'])
 
     const props = defineProps({
         modal: {
@@ -48,6 +48,7 @@
                         name="name"
                         placeholder="spent"
                         :value="name"
+                        @input="$emit('update:name',$event.target.value)"
                     />
                 </div>
                 <div class="field">
@@ -59,6 +60,7 @@
                         name="ammount"
                         placeholder="amount"
                         :value="amount"
+                        @input="$emit('update:amount',+$event.target.value)"
                     />
                 </div>
                 <div class="field">
@@ -69,6 +71,7 @@
                         name="category"
                         id="category"
                         :value="category"
+                        @input="$emit('update:category',$event.target.value)"
                     >
                         <option value="">-- Select --</option>
                         <option value="savings">Savings</option>

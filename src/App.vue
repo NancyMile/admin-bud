@@ -37,7 +37,11 @@
     setTimeout(() => {
       modal.show = false
     },300)
-}
+  }
+
+  const savingExpense = () => {
+    console.log('saving expense')
+  }
 
 </script>
 
@@ -69,6 +73,7 @@
       <Modal
         v-if="modal.show"
         @close-modal="closeModal"
+        @saving-expense="savingExpense"
         :modal="modal"
         v-model:name="spent.name"
         v-model:amount="spent.amount"

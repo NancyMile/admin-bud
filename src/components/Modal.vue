@@ -27,13 +27,21 @@
         available: {
             type: Number,
             required: true
+        },
+        id: {
+            type: [String, null],
+            required: true
         }
     })
+
+    //console.log(props.id)
+    const old_amount = props.amount
 
     const addExpense = () => {
         //console.log('adding spent')
         //validate fields
-        const { name, amount, category, available } = props
+        const { name, amount, category, available, id } = props
+
         if ([name, amount, category].includes('')) {
             //console.log('Please fill everything')
             error.value = 'Please fill everything'
@@ -50,13 +58,25 @@
             },3000)
             return
         }
-        if (available < amount) {
-            error.value = "Not enough budget for this"
-            setTimeout(() => {
-                error.value = ''
-            }, 3000)
-            return
+        //validate available is < = amount required
+        if (id) {
+            if (amount > old_amount + available) {
+                error.value = "Not enough budget for this"
+                setTimeout(() => {
+                    error.value = ''
+                }, 3000)
+                return
+            }
+        } else {
+            if (available < amount) {
+                error.value = "Not enough budget for this"
+                setTimeout(() => {
+                    error.value = ''
+                }, 3000)
+                return
+            }
         }
+
 
         //console.log('Saving expense')
         emit('saving-expense')

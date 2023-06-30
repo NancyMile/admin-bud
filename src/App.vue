@@ -146,6 +146,7 @@
         v-if="modal.show"
         @close-modal="closeModal"
         @saving-expense="savingExpense"
+        :id="spent.id"
         :modal="modal"
         :available="available"
         v-model:name="spent.name"

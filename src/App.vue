@@ -1,6 +1,7 @@
 <script setup>
   import { ref } from 'vue'
   import Budget from './components/Budget.vue'
+  import BudgetControl from './components/BudgetControl.vue';
 
   const budget = ref(0)
   const setBudget = (amount) => {
@@ -18,7 +19,9 @@
           v-if="budget === 0"
           @set-budget="setBudget"
         />
-        <p v-else>Valid Budget</p>
+        <BudgetControl
+          v-else
+        />
       </div>
     </header>
     <Filter/>

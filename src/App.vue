@@ -64,7 +64,9 @@
 </script>
 
 <template>
-  <div>
+  <div
+    :class="{fix: modal.show}"
+  >
     <header>
       <h1>Admin Expenses</h1>
       <div class="contenedor-header contenedor shadow">
@@ -143,6 +145,10 @@
   }
   h2{
     font-size: 3rem;
+  }
+  .fix{
+    overflow: hidden;
+    height: 100vh;
   }
   header{
     background-color: var(--blue);

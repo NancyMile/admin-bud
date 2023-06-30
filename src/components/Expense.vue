@@ -15,7 +15,7 @@
         miscellaneus : IconMiscellaneus,
         leisure : IconLeisure,
         health : IconHealth,
-        suscriptions : IconSuscriptions
+        subscriptions : IconSuscriptions
     }
 
     const props = defineProps({

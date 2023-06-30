@@ -101,7 +101,7 @@
                 class="new-spent"
             >
                 <legend>
-                    Adding Spent
+                   {{ id ? 'Edit Expenses': 'Add expenses'}}
                 </legend>
 
                 <Alert v-if="error">
@@ -154,7 +154,7 @@
                 </div>
                 <input
                     type="submit"
-                    value="Add Spent"
+                    :value="[id ? 'Edit Expenses': 'Add expenses']"
                 />
             </form>
 

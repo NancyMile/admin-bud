@@ -99,6 +99,12 @@
     displayModal()
   }
 
+  const deleteExpense = () => {
+    //console.log('delete expense')
+    expenses.value = expenses.value.filter(expenseState => expenseState.id !== spent.id)
+    closeModal()
+  }
+
 </script>
 
 <template>
@@ -146,6 +152,7 @@
         v-if="modal.show"
         @close-modal="closeModal"
         @saving-expense="savingExpense"
+        @delete-expense="deleteExpense"
         :id="spent.id"
         :modal="modal"
         :available="available"

@@ -1,5 +1,6 @@
 <script setup>
-    import imagen from '../assets/img/grafico.jpg'
+    import CircleProgress from 'vue3-circle-progress-bar'
+    import "vue3-circle-progress-bar/dist/circle-progress-bar.css"
     import { formatAmount } from '../helpers'
 const props = defineProps({
     budget: {
@@ -22,8 +23,13 @@ const props = defineProps({
 <template>
     <div class="two-columns">
         <div class="contenedor-grafico">
-            <img
-                :src="imagen"
+            <CircleProgress
+                :percent="20"
+                :size="250"
+                :border-width="30"
+                :border-bg-width="30"
+                 fill-color="#3b82f6"
+                 empty-color="#e1e1e1"
             />
         </div>
         <div class="container-budget">

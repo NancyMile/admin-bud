@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, reactive, watch } from 'vue'
+  import { ref, reactive, watch, computed } from 'vue'
   import Budget from './components/Budget.vue'
   import BudgetControl from './components/BudgetControl.vue';
   import Modal from './components/Modal.vue'
@@ -107,6 +107,13 @@
     closeModal()
   }
 
+  const filterExpenses = computed(() => {
+    if (filter.value) {
+      return expenses.value.filter(expense => expense.category === filter.value)
+    }
+    return expenses.value
+  })
+
 </script>
 
 <template>
@@ -135,7 +142,7 @@
       <div class="list-expenses contenedor">
         <h2>{{ expenses.length>0 ? 'Expenses': 'No Expenses'}}</h2>
         <Expense
-          v-for="expense in expenses"
+          v-for="expense in filterExpenses"
           :key="expense.id"
           :expense="expense"
           @select-expense="selectExpense"

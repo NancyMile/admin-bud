@@ -161,6 +161,13 @@
                     :value="[isEditing ? 'Edit Expenses': 'Add expenses']"
                 />
             </form>
+            <button
+                type="button"
+                class="btn-eliminar"
+                v-if="isEditing"
+            >
+                Delete
+            </button>
 
         </div>
     </div>
@@ -228,6 +235,18 @@
         background-color: var(--blue);
         color: var(--white);
         font-weight: 700;
+        cursor: pointer;
+    }
+    .btn-eliminar{
+        border: none;
+        border-radius: 1rem;
+        padding: 1rem;
+        width: 100%;
+        background-color: #f4444f;
+        font-weight: 700;
+        color: var(--white);
+        font-size: 1.2rem;
+        margin-top: 10rem;
         cursor: pointer;
     }
 

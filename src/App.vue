@@ -4,6 +4,7 @@
   import BudgetControl from './components/BudgetControl.vue';
   import Modal from './components/Modal.vue'
   import Expense from './components/Expense.vue'
+  import Filter from './components/Filter.vue'
   import newSpentIcon from './assets/img/nuevo-gasto.svg'
   import { generateId } from './helpers'
 
@@ -14,6 +15,7 @@
   const budget = ref(0)
   const available = ref(0)
   const budgetSpent = ref(0)
+  const filter = ref('')
 
   const spent = reactive({
     name: '',
@@ -127,7 +129,9 @@
       </div>
     </header>
     <main v-if="budget > 0">
-
+      <Filter
+        v-model:filter="filter"
+      />
       <div class="list-expenses contenedor">
         <h2>{{ expenses.length>0 ? 'Expenses': 'No Expenses'}}</h2>
         <Expense
@@ -160,9 +164,7 @@
         v-model:amount="spent.amount"
         v-model:category="spent.category"
       />
-
     </main>
-    <Filter/>
   </div>
 </template>
 

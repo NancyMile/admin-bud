@@ -134,6 +134,14 @@
     return expenses.value
   })
 
+  const resetApp = () => {
+    //console.log('reset app')
+    if (confirm('Please confirm reset')) {
+        budget.value = 0
+        expenses.value = []
+     }
+  }
+
 </script>
 
 <template>
@@ -152,6 +160,7 @@
           :budget="budget"
           :available="available"
           :budgetSpent="budgetSpent"
+          @reset-app="resetApp"
         />
       </div>
     </header>
